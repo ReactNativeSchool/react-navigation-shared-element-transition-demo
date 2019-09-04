@@ -16,7 +16,9 @@
     "react-native-screens": "1.0.0-alpha.22",
     "react-native-unimodules": "~0.5.2",
     "react-native-web": "^0.11.4",
-    "react-navigation-fluid-transitions": "^0.3.2"
+    "react-navigation": "^4.0.0",
+    "react-navigation-fluid-transitions": "^0.3.2",
+    "react-navigation-stack": "^1.5.1"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",

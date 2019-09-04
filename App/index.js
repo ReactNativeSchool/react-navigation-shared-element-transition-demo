@@ -1,16 +1,16 @@
 import React from "react";
 import { ScrollView, SafeAreaView } from "react-native";
+import { createAppContainer } from "react-navigation";
+import { createFluidNavigator } from "react-navigation-fluid-transitions";
 
-import { Card } from "./components/Card";
+import List from "./screens/List";
+import Details from "./screens/Details";
 
-export default () => (
-  <SafeAreaView>
-    <ScrollView>
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-    </ScrollView>
-  </SafeAreaView>
-);
+const Navigator = createFluidNavigator({
+  List: { screen: List },
+  Details: { screen: Details }
+});
+
+const App = createAppContainer(Navigator);
+
+export default () => <App />;
