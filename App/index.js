@@ -1,6 +1,7 @@
 import React from "react";
 import { ScrollView, SafeAreaView } from "react-native";
 import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
 import { createFluidNavigator } from "react-navigation-fluid-transitions";
 
 import List from "./screens/List";

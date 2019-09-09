@@ -12,6 +12,7 @@ import {
 import { Transition } from "react-navigation-fluid-transitions";
 
 const Screen = Dimensions.get("window");
+const IMAGE_SIZE = Screen.width * 0.5;
 const styles = StyleSheet.create({
   content: {},
   infoContainer: {
@@ -19,19 +20,17 @@ const styles = StyleSheet.create({
     marginBottom: 0
   },
   panelTitle: {
-    fontSize: 27,
-    height: 35
+    fontSize: 22,
+    marginBottom: 4
   },
   panelSubtitle: {
     fontSize: 14,
-    color: "gray",
-    height: 30,
-    marginBottom: 10
+    color: "gray"
   },
   photo: {
-    width: Screen.width * 0.5,
-    height: Screen.width * 0.5,
-    borderRadius: Screen.width,
+    width: IMAGE_SIZE,
+    height: IMAGE_SIZE,
+    borderRadius: IMAGE_SIZE / 2,
     alignSelf: "center"
   },
   block: {
@@ -55,17 +54,17 @@ export default ({ navigation }) => {
             source={require("../assets/aircraft-wing.jpg")}
           />
         </Transition>
-        <View style={styles.infoContainer}>
-          <Transition shared={`info-${index}`}>
+        <Transition shared={`info-${index}`}>
+          <View style={styles.infoContainer}>
             <View>
               <Text style={styles.panelTitle}>San Francisco Airport</Text>
               <Text style={styles.panelSubtitle}>
                 International Airport - 40 miles away
               </Text>
             </View>
-          </Transition>
-        </View>
-        <Transition appear="right" disappear="scale">
+          </View>
+        </Transition>
+        <Transition appear="right" disappear="left">
           <TouchableOpacity onPress={() => navigation.pop()}>
             <View style={styles.block}>
               <Text style={styles.blockText}>

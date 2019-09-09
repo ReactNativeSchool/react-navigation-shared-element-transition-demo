@@ -12,6 +12,7 @@ import {
 import { Transition } from "react-navigation-fluid-transitions";
 
 const Screen = Dimensions.get("window");
+const IMAGE_SIZE = Screen.width * 0.25;
 const styles = StyleSheet.create({
   content: {
     margin: 10,
@@ -64,9 +65,9 @@ const styles = StyleSheet.create({
     color: "white"
   },
   photo: {
-    width: Screen.width * 0.25,
-    height: Screen.width * 0.25,
-    borderRadius: Screen.width
+    width: IMAGE_SIZE,
+    height: IMAGE_SIZE,
+    borderRadius: IMAGE_SIZE / 2
   }
 });
 
