@@ -14,8 +14,8 @@ import { Transition } from "react-navigation-fluid-transitions";
 const Screen = Dimensions.get("window");
 const styles = StyleSheet.create({
   content: {
-    margin: 20,
-    padding: 20,
+    margin: 10,
+    padding: 10,
     backgroundColor: "white",
     borderWidth: 1,
     borderColor: "#ccc",
@@ -25,61 +25,79 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 10
   },
+  row: {
+    flexDirection: "row",
+    flex: 1
+  },
+  infoBlock: {
+    marginLeft: 10,
+    justifyContent: "center",
+    flex: 1
+  },
   panelTitle: {
-    fontSize: 27,
-    height: 35
+    fontSize: 22,
+    marginBottom: 4
   },
   panelSubtitle: {
     fontSize: 14,
-    color: "gray",
-    height: 30,
-    marginBottom: 10
+    color: "gray"
+  },
+  buttonRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 10
   },
   panelButton: {
-    padding: 20,
+    paddingVertical: 20,
     borderRadius: 10,
     backgroundColor: "#de6d77",
     alignItems: "center",
-    marginVertical: 10
+    marginVertical: 10,
+    flex: 1,
+    margin: 10,
+    alignItems: "center",
+    justifyContent: "center"
   },
   panelButtonTitle: {
-    fontSize: 17,
+    fontSize: 16,
     fontWeight: "bold",
     color: "white"
   },
   photo: {
-    width: Screen.width,
-    height: 190,
-    marginBottom: 20,
-    marginLeft: -20
+    width: Screen.width * 0.25,
+    height: Screen.width * 0.25,
+    borderRadius: Screen.width
   }
 });
 
-export const Card = ({ navigation }) => (
-  <TouchableOpacity onPress={() => navigation.navigate("Details")}>
+export const Card = ({ navigation, index }) => (
+  <TouchableOpacity onPress={() => navigation.navigate("Details", { index })}>
     <View style={styles.content}>
-      <Transition shared="info">
-        <View>
-          <Text style={styles.panelTitle}>San Francisco Airport</Text>
-          <Text style={styles.panelSubtitle}>
-            International Airport - 40 miles away
-          </Text>
-        </View>
-      </Transition>
-
-      <View style={{ overflow: "hidden" }}>
-        <Transition shared="image">
+      <View style={styles.row}>
+        <Transition shared={`image-${index}`}>
           <Image
             style={styles.photo}
             source={require("../assets/aircraft-wing.jpg")}
           />
         </Transition>
+
+        <Transition shared={`info-${index}`}>
+          <View style={styles.infoBlock}>
+            <Text style={styles.panelTitle}>San Francisco Airport</Text>
+            <Text style={styles.panelSubtitle}>
+              International Airport - 40 miles away
+            </Text>
+          </View>
+        </Transition>
       </View>
-      <View style={styles.panelButton}>
-        <Text style={styles.panelButtonTitle}>Directions</Text>
-      </View>
-      <View style={styles.panelButton}>
-        <Text style={styles.panelButtonTitle}>Search Nearby</Text>
+
+      <View style={styles.buttonRow}>
+        <View style={styles.panelButton}>
+          <Text style={styles.panelButtonTitle}>Directions</Text>
+        </View>
+        <View style={styles.panelButton}>
+          <Text style={styles.panelButtonTitle}>Search Nearby</Text>
+        </View>
       </View>
     </View>
   </TouchableOpacity>
@@ -88,11 +106,14 @@ export const Card = ({ navigation }) => (
 export default ({ navigation }) => (
   <SafeAreaView>
     <ScrollView>
-      <Card navigation={navigation} />
-      <Card navigation={navigation} />
-      <Card navigation={navigation} />
-      <Card navigation={navigation} />
-      <Card navigation={navigation} />
+      <Card navigation={navigation} index={0} />
+      <Card navigation={navigation} index={1} />
+      <Card navigation={navigation} index={2} />
+      <Card navigation={navigation} index={3} />
+      <Card navigation={navigation} index={4} />
+      <Card navigation={navigation} index={5} />
+      <Card navigation={navigation} index={6} />
+      <Card navigation={navigation} index={7} />
     </ScrollView>
   </SafeAreaView>
 );
